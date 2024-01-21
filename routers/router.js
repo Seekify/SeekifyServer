@@ -1,8 +1,9 @@
 const express = require('express');
+const { listController } = require('../controllers/controller');
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+router.route('/list', {
+  get: listController.createList
+})
 
 module.exports = router;

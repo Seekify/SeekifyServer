@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const AWS = require('aws-sdk');
+const connection = require('../utils/AwsDbConnection')
 require('dotenv').config();
 
 const app = express();
@@ -21,6 +22,6 @@ app.use(express.json());
 
 const routes = require('../../routers/router');
 
-app.use('/api', routes);
+app.use('v1/api/', routes);
 
 module.exports = app;

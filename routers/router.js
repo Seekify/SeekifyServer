@@ -1,9 +1,15 @@
 const express = require('express');
 const { listController } = require('../controllers/controller');
-const router = express.Router();
+const ListRouter = express.Router();
 
-router.route('/list', {
-  get: listController.createList
-})
+ListRouter.route('')
+  .post(listController.createList)
 
-module.exports = router;
+  ListRouter.route('/:list_id')
+  .put(listController.updateListDetails)
+  .delete(listController.deleteListById)
+
+  ListRouter.route('/user/:username')
+  .get(listController.getListsByUsername)
+
+module.exports = ListRouter;

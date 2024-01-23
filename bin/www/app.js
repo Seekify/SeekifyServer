@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const AWS = require('aws-sdk');
 const ListRouter = require('../../routers/router');
 const PlaceRouter = require('../../routers/PlacesRouter');
+const ListPlaceRouter = require('../../routers/ListPlaceRouter');
 require('dotenv').config();
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(helmet());
 app.use(morgan('common')); 
 app.use(express.json());  
 
+app.use('/api/v1/list/places/', ListPlaceRouter);
 app.use('/api/v1/list/', ListRouter);
 app.use('/api/v1/places/', PlaceRouter);
 
